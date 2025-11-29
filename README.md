@@ -16,7 +16,7 @@ Add to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  philiprehberger_string_ext: ^0.1.1
+  philiprehberger_string_ext: ^0.2.0
 ```
 
 Then run:
@@ -56,6 +56,18 @@ print('user@example.com'.isEmail); // true
 'hello world foo'.words                          // => ['hello', 'world', 'foo']
 ```
 
+### Initials and Wrapping
+
+```dart
+import 'package:philiprehberger_string_ext/philiprehberger_string_ext.dart';
+
+'John Doe'.initials;          // 'JD'
+'alice bob charlie'.initials;  // 'ABC'
+
+'The quick brown fox jumps over the lazy dog'.wrap(20);
+// 'The quick brown fox\njumps over the lazy\ndog'
+```
+
 ### Validation
 
 ```dart
@@ -78,6 +90,8 @@ print('user@example.com'.isEmail); // true
 | `mask({start, end, char})` | `String` | Mask characters in range |
 | `reversed` | `String` | Reverse the string |
 | `words` | `List<String>` | Split into words by whitespace |
+| `initials` | `String` | Extract first letter of each word |
+| `wrap(width)` | `String` | Wrap text at word boundaries |
 | `isEmail` | `bool` | Whether string is a valid email |
 | `isUrl` | `bool` | Whether string is a valid URL |
 | `isNumeric` | `bool` | Whether string is numeric only |

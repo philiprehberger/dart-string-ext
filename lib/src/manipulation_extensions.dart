@@ -38,4 +38,47 @@ extension StringManipulationExt on String {
   /// ```
   List<String> get words =>
       split(RegExp(r'\s+')).where((w) => w.isNotEmpty).toList();
+
+  /// Extracts initials from the string (first letter of each word, uppercase).
+  ///
+  /// ```dart
+  /// 'John Doe'.initials; // 'JD'
+  /// 'alice bob charlie'.initials; // 'ABC'
+  /// ```
+  String get initials {
+    if (trim().isEmpty) return '';
+    return trim()
+        .split(RegExp(r'\s+'))
+        .where((w) => w.isNotEmpty)
+        .map((w) => w[0].toUpperCase())
+        .join();
+  }
+
+  /// Wraps text at [width] characters, breaking at word boundaries.
+  ///
+  /// ```dart
+  /// 'The quick brown fox jumps'.wrap(10);
+  /// // 'The quick\nbrown fox\njumps'
+  /// ```
+  String wrap(int width) {
+    if (width <= 0 || length <= width) return this;
+    final words = split(RegExp(r'\s+'));
+    final lines = <String>[];
+    var currentLine = StringBuffer();
+
+    for (final word in words) {
+      if (currentLine.isEmpty) {
+        currentLine.write(word);
+      } else if (currentLine.length + 1 + word.length <= width) {
+        currentLine.write(' $word');
+      } else {
+        lines.add(currentLine.toString());
+        currentLine = StringBuffer(word);
+      }
+    }
+    if (currentLine.isNotEmpty) {
+      lines.add(currentLine.toString());
+    }
+    return lines.join('\n');
+  }
 }
