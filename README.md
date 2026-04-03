@@ -16,7 +16,7 @@ Add to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  philiprehberger_string_ext: ^0.1.0
+  philiprehberger_string_ext: ^0.1.1
 ```
 
 Then run:
