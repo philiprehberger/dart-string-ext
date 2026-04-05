@@ -29,5 +29,37 @@ void main() {
       expect('hello world foo'.words, equals(['hello', 'world', 'foo']));
       expect('  spaced  out  '.words, equals(['spaced', 'out']));
     });
+
+    test('initials extracts first letters', () {
+      expect('John Doe'.initials, 'JD');
+    });
+
+    test('initials handles multiple words', () {
+      expect('alice bob charlie'.initials, 'ABC');
+    });
+
+    test('initials handles single word', () {
+      expect('hello'.initials, 'H');
+    });
+
+    test('initials handles empty string', () {
+      expect(''.initials, '');
+    });
+
+    test('wrap breaks at word boundaries', () {
+      expect('The quick brown fox'.wrap(10), 'The quick\nbrown fox');
+    });
+
+    test('wrap returns original if within width', () {
+      expect('short'.wrap(10), 'short');
+    });
+
+    test('wrap handles single long word', () {
+      expect('abcdefghij'.wrap(5), 'abcdefghij');
+    });
+
+    test('wrap handles empty string', () {
+      expect(''.wrap(10), '');
+    });
   });
 }
