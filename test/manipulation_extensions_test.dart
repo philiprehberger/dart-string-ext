@@ -61,5 +61,42 @@ void main() {
     test('wrap handles empty string', () {
       expect(''.wrap(10), '');
     });
+
+    test('lines splits on \\n, \\r\\n, and \\r', () {
+      expect('a\nb\nc'.lines, equals(['a', 'b', 'c']));
+      expect('a\r\nb\r\nc'.lines, equals(['a', 'b', 'c']));
+      expect('a\rb\rc'.lines, equals(['a', 'b', 'c']));
+    });
+
+    test('lines empty string returns empty list', () {
+      expect(''.lines, isEmpty);
+    });
+
+    test('lines single line returns one element', () {
+      expect('hello'.lines, equals(['hello']));
+    });
+
+    test('lineCount counts lines', () {
+      expect(''.lineCount, equals(0));
+      expect('a'.lineCount, equals(1));
+      expect('a\nb\nc'.lineCount, equals(3));
+      expect('a\r\nb'.lineCount, equals(2));
+    });
+
+    test('wordCount counts tokens', () {
+      expect(''.wordCount, equals(0));
+      expect('hello'.wordCount, equals(1));
+      expect('hello world foo'.wordCount, equals(3));
+      expect('  spaced   out  '.wordCount, equals(2));
+      expect('   '.wordCount, equals(0));
+    });
+
+    test('squish collapses whitespace and trims', () {
+      expect('  hi   there  '.squish, equals('hi there'));
+      expect('hello'.squish, equals('hello'));
+      expect(''.squish, equals(''));
+      expect('   '.squish, equals(''));
+      expect('a\tb\n c'.squish, equals('a b c'));
+    });
   });
 }

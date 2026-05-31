@@ -57,6 +57,23 @@ extension StringCaseExt on String {
     return _splitWords().map((w) => w.toLowerCase()).join('-');
   }
 
+  /// Convert to PascalCase.
+  ///
+  /// ```dart
+  /// 'hello world'.pascalCase  // => 'HelloWorld'
+  /// 'hello_world'.pascalCase  // => 'HelloWorld'
+  /// 'helloWorld'.pascalCase   // => 'HelloWorld'
+  /// ```
+  String get pascalCase {
+    if (isEmpty) return this;
+    final words = _splitWords();
+    if (words.isEmpty) return '';
+    return words
+        .map((w) =>
+            w.isEmpty ? '' : w[0].toUpperCase() + w.substring(1).toLowerCase())
+        .join();
+  }
+
   List<String> _splitWords() {
     // Split on spaces, underscores, hyphens, and camelCase boundaries
     return replaceAllMapped(

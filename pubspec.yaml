@@ -1,7 +1,7 @@
 name: philiprehberger_string_ext
 description: >-
   String extension methods for case conversion, truncation, masking, and validation
-version: 0.2.0
+version: 0.3.0
 homepage: https://philiprehberger.com/open-source-packages/dart/philiprehberger_string_ext
 repository: https://github.com/philiprehberger/dart-string-ext
 issue_tracker: https://github.com/philiprehberger/dart-string-ext/issues

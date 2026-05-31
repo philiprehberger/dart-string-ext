@@ -31,5 +31,14 @@ void main() {
       expect('helloWorld'.kebabCase, equals('hello-world'));
       expect('Hello World'.kebabCase, equals('hello-world'));
     });
+
+    test('pascalCase', () {
+      expect('hello world'.pascalCase, equals('HelloWorld'));
+      expect('hello_world'.pascalCase, equals('HelloWorld'));
+      expect('helloWorld'.pascalCase, equals('HelloWorld'));
+      expect('HELLO-WORLD'.pascalCase, equals('HelloWorld'));
+      expect(''.pascalCase, equals(''));
+      expect('  '.pascalCase, equals(''));
+    });
   });
 }

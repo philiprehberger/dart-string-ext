@@ -5,6 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+## [0.3.0] - 2026-05-30
+
+### Added
+- `pascalCase` getter for PascalCase conversion (complements existing `camelCase`/`snakeCase`/`kebabCase`)
+- `lines` getter — splits on `\n`, `\r\n`, and `\r`
+- `lineCount` getter — number of lines (0 for empty string)
+- `wordCount` getter — number of whitespace-separated tokens
+- `squish` — collapse whitespace runs into single spaces and trim ends
+
 ## [0.2.0] - 2026-04-04
 
 ### Added

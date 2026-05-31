@@ -81,4 +81,35 @@ extension StringManipulationExt on String {
     }
     return lines.join('\n');
   }
+
+  /// Split into lines (handles `\n`, `\r\n`, and `\r` separators).
+  ///
+  /// ```dart
+  /// 'a\nb\r\nc'.lines // => ['a', 'b', 'c']
+  /// ```
+  List<String> get lines =>
+      isEmpty ? const <String>[] : split(RegExp(r'\r\n|\r|\n'));
+
+  /// Number of lines in the string. Empty string returns 0.
+  ///
+  /// ```dart
+  /// 'a\nb\nc'.lineCount // => 3
+  /// ''.lineCount        // => 0
+  /// ```
+  int get lineCount => lines.length;
+
+  /// Number of whitespace-separated non-empty tokens.
+  ///
+  /// ```dart
+  /// 'hello world foo'.wordCount // => 3
+  /// '   '.wordCount             // => 0
+  /// ```
+  int get wordCount => words.length;
+
+  /// Collapse runs of whitespace into a single space and trim ends.
+  ///
+  /// ```dart
+  /// '  hi   there  '.squish // => 'hi there'
+  /// ```
+  String get squish => trim().replaceAll(RegExp(r'\s+'), ' ');
 }
